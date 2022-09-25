@@ -5,13 +5,13 @@ export default class Warrior extends Archetype {
   private static counter = 0;
   private _type: EnergyType;
     
-  constructor(name: string, special: number, cost: number) {
-    super(name, special, cost);
+  constructor(name: string) {
+    super(name);
     this._type = 'stamina';
     Warrior.counter += 1;
   }
   
-  static createdRacesInstances(): number {
+  static createdArchetypeInstances(): number {
     return Warrior.counter;
   }
 
