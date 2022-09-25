@@ -1,6 +1,6 @@
 import Archetype, { Mage } from './Archetypes';
 import Energy from './Energy';
-import Fighter from './Fighter';
+import Fighter, { SimpleFighter } from './Fighter';
 import Race, { Elf } from './Races';
 import getRandomInt from './utils';
 
@@ -24,7 +24,7 @@ export default class Character {
     this._cost = getRandomInt(1, 10);
     const race = new Elf(this._name, this._dexterity);
     this._race = race;
-    const archetype = new Mage(this._name, this._special, this._cost);
+    const archetype = new Mage(this._name);
     this._archetype = archetype;
     this._maxLifePoints = ((this._race.maxLifePoints) / 2);
     this._lifePoints = this._maxLifePoints;
@@ -72,7 +72,7 @@ export default class Character {
     return this._lifePoints;
   }
 
-  attack(enemy: Fighter): void {
+  attack(enemy: Fighter | SimpleFighter): void {
     enemy.receiveDamage(this._strength);
   }
 
